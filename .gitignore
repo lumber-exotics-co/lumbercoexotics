@@ -126,6 +126,8 @@ typings/
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.server/bin/URI.js
+
 
 # Gradle
 .idea/**/gradle.xml

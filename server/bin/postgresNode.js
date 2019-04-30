@@ -1,114 +1,110 @@
+const connectionString = require("./URI.js");
 // 1) connect to DB
 const {
   Pool
 } = require('pg');
-const config = require('../../config/config.json');
 
 const pool = new Pool({
-  user: config.username,
-  host: 'localhost',
-  database: 'store',
-  password: config.password,
-  port: 5432,
+  connectionString:connectionString,
 });
 
 // create array of values to insert into database
-const woodValuesToInsert = [{
-  type: 'ash',
-  image: 'https://imgur.com/1aIZHue',
-  description: 'Tough hardwood imported from southeastern states',
-  price: 19.99,
-  inStock: true
-}, {
-  type: 'birch',
-  image: 'https://imgur.com/sQmjwrT',
-  description: 'Hard, heavy wood imported from northeastern states',
-  price: 25.99,
-  inStock: true
-}, {
-  type: 'cherry',
-  image: 'https://imgur.com/nfYqw34',
-  description: 'One of our premium wood imported from northeastern states',
-  price: 19.99,
-  inStock: true
-}, {
-  type: 'maple',
-  image: 'https://imgur.com/6mF8cnY',
-  description: 'Most popular and durable wood imported from southeastern states',
-  price: 29.99,
-  inStock: true
-}, {
-  type: 'pine',
-  image: 'https://imgur.com/hCoZu9C',
-  description: 'Imported from eastern states',
-  price: 15.99,
-  inStock: true
-}, {
-  type: 'redoak',
-  image: 'https://imgur.com/KACe4VK',
-  description: 'Top of the line, solid wood imported from western states',
-  price: 29.99,
-  inStock: true
-}];
-const stainValuesTOInsert = [{
-  type: 'Burgundy',
-  image: 'https://imgur.com/Ybv96C6',
-  description: 'Water-resistant and durable',
-  price: 19.99,
-  inStock: true
-}, {
-  type: 'Cherry-Blossom',
-  image: 'https://imgur.com/q3OvhO5',
-  description: 'economical and durable',
-  price: 15.99,
-  inStock: true
-}, {
-  type: 'Honeydew',
-  image: 'https://imgur.com/lWjpnzx',
-  description: 'Water-resistant and durable',
-  price: 19.99,
-  inStock: true
-}, {
-  type: 'Island-Water',
-  image: 'https://imgur.com/n50UxsO',
-  description: 'High quality, water-resistant and durable',
-  price: 25.99,
-  inStock: true
-}, {
-  type: 'Pure-white',
-  image: 'https://imgur.com/x1vj3JB',
-  description: 'Water-resistant and durable',
-  price: 20.99,
-  inStock: true
-}, {
-  type: 'Slate',
-  image: 'https://imgur.com/l8VkEXM',
-  description: 'High demand, high quality, water-resistant and durable',
-  price: 25.99,
-  inStock: true
-}];
+// const woodValuesToInsert = [{
+//   type: 'ash',
+//   image: 'https://imgur.com/1aIZHue',
+//   description: 'Tough hardwood imported from southeastern states',
+//   price: 19.99,
+//   inStock: true
+// }, {
+//   type: 'birch',
+//   image: 'https://imgur.com/sQmjwrT',
+//   description: 'Hard, heavy wood imported from northeastern states',
+//   price: 25.99,
+//   inStock: true
+// }, {
+//   type: 'cherry',
+//   image: 'https://imgur.com/nfYqw34',
+//   description: 'One of our premium wood imported from northeastern states',
+//   price: 19.99,
+//   inStock: true
+// }, {
+//   type: 'maple',
+//   image: 'https://imgur.com/6mF8cnY',
+//   description: 'Most popular and durable wood imported from southeastern states',
+//   price: 29.99,
+//   inStock: true
+// }, {
+//   type: 'pine',
+//   image: 'https://imgur.com/hCoZu9C',
+//   description: 'Imported from eastern states',
+//   price: 15.99,
+//   inStock: true
+// }, {
+//   type: 'redoak',
+//   image: 'https://imgur.com/KACe4VK',
+//   description: 'Top of the line, solid wood imported from western states',
+//   price: 29.99,
+//   inStock: true
+// }];
+// const stainValuesTOInsert = [{
+//   type: 'Burgundy',
+//   image: 'https://imgur.com/Ybv96C6',
+//   description: 'Water-resistant and durable',
+//   price: 19.99,
+//   inStock: true
+// }, {
+//   type: 'Cherry-Blossom',
+//   image: 'https://imgur.com/q3OvhO5',
+//   description: 'economical and durable',
+//   price: 15.99,
+//   inStock: true
+// }, {
+//   type: 'Honeydew',
+//   image: 'https://imgur.com/lWjpnzx',
+//   description: 'Water-resistant and durable',
+//   price: 19.99,
+//   inStock: true
+// }, {
+//   type: 'Island-Water',
+//   image: 'https://imgur.com/n50UxsO',
+//   description: 'High quality, water-resistant and durable',
+//   price: 25.99,
+//   inStock: true
+// }, {
+//   type: 'Pure-white',
+//   image: 'https://imgur.com/x1vj3JB',
+//   description: 'Water-resistant and durable',
+//   price: 20.99,
+//   inStock: true
+// }, {
+//   type: 'Slate',
+//   image: 'https://imgur.com/l8VkEXM',
+//   description: 'High demand, high quality, water-resistant and durable',
+//   price: 25.99,
+//   inStock: true
+// }];
 
-// DB insert queries
-const createWoodTable =
-  `CREATE TABLE IF NOT EXISTS wood("_id" serial PRIMARY KEY NOT NULL, "type" varchar(50) NOT NULL, "image" varchar, "description" varchar, "price" numeric(10,2) NOT NULL, "inStock" boolean)`;
-const stainTableInsertQuery =
-  `CREATE TABLE IF NOT EXISTS stain(
-  "_id" serial PRIMARY KEY NOT NULL,
-  "type" varchar(50) NOT NULL,
-  "image" varchar,
-  "description" varchar,
-  "price" numeric(10,2) NOT NULL,
-  "inStock" boolean)`;
+// // DB insert queries
+// const createWoodTable =
+//   `CREATE TABLE IF NOT EXISTS wood("_id" serial PRIMARY KEY NOT NULL, "type" varchar(50) NOT NULL, "image" varchar, "description" varchar, "price" numeric(10,2) NOT NULL, "inStock" boolean)`;
+// const stainTableInsertQuery =
+//   `CREATE TABLE IF NOT EXISTS stain(
+//   "_id" serial PRIMARY KEY NOT NULL,
+//   "type" varchar(50) NOT NULL,
+//   "image" varchar,
+//   "description" varchar,
+//   "price" numeric(10,2) NOT NULL,
+//   "inStock" boolean)`;
 
-  const cartTableQuery =
-  `CREATE TABLE IF NOT EXISTS cart(
-  "_id" serial PRIMARY KEY NOT NULL,
-  "orderID" integer NOT NULL,
-  "customer" varchar,
-  "wood" varchar,
-  "stain" varchar(50) NOT NULL,
-  "email" varchar,
-  "total" numeric(10,2))`;
+//   const cartTableQuery =
+//   `CREATE TABLE IF NOT EXISTS cart(
+//   "_id" serial PRIMARY KEY NOT NULL,
+//   "orderID" integer NOT NULL,
+//   "customer" varchar,
+//   "wood" varchar,
+//   "stain" varchar(50) NOT NULL,
+//   "email" varchar,
+//   "total" numeric(10,2))`;
 
 
 function createWoodTableAndInsertValues() {
@@ -155,8 +151,8 @@ function createCartTable() {
   });
 }
 
-createWoodTableAndInsertValues();
-createStainTableAndInsertValues();
-createCartTable();
+// createWoodTableAndInsertValues();
+// createStainTableAndInsertValues();
+// createCartTable();
 
 module.exports = pool;
