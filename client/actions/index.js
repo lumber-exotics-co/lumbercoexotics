@@ -34,6 +34,21 @@ export const getStain = () => {
   }
 };
 
+export const getData = () => {
+  return (dispatch) => {
+    axios.get('/api/analytics')
+      .catch(err=> {
+        console.log(err);
+      })
+      .then(response => {
+        dispatch({
+          type:types.GET_DATA,
+          payload: response.data
+        })
+      })
+  }
+}
+
 // test action creator - wood
 /*export const getWood = value => {
   return {
@@ -74,9 +89,10 @@ export const getStain = () => {
   }
 };*/
 
-export const submitOrder = () => {
+export const submitOrder = (value) => {
   return {
-    type: types.SUBMIT_ORDER
+    type: types.SUBMIT_ORDER,
+    payload: value
   }
 };
 

@@ -8,6 +8,10 @@ router.get('/wood', (req, res) => {
   productController.woodQuery(req, res);
 });
 
+router.get('/analytics', (req, res) => {
+  productController.analyticsQuery(req,res);
+});
+
 router.get('/stain', (req, res) => {
   //res.send('api route reached');
   productController.stainQuery(req, res);
