@@ -10,7 +10,7 @@ const server = require('http').createServer(app)
 
 const io = require('socket.io')(server);
 
-server.listen(PORT, '192.168.0.59', () => {
+server.listen(PORT, '192.168.0.221', () => {
   console.log(`Listening on ${PORT}.`)
 })
 
@@ -57,10 +57,7 @@ io.sockets.on('connection', function (socket){
   let clientIp = socket.request.connection.remoteAddress;
   socket.on('chat message', function(msg){
     io.sockets.emit('chat message', msg)
-<<<<<<< HEAD
-=======
     
->>>>>>> 9e54530aacb5a55a6b901f19b36d0d205403144a
   })
 
 })

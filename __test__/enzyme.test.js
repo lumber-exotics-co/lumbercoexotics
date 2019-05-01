@@ -8,6 +8,7 @@ import App from '../components/App'
 import Home from '../components/home';
 import ProductDisplay from '../components/productDisplay';
 import Cart from '../components/containers/cart';
+import { exportAllDeclaration } from '@babel/types';
 
 configure({adapter : new Adapter()});
 
@@ -24,21 +25,28 @@ configure({adapter : new Adapter()});
 //     })
 // });
 
+const sum = (x, y) => x + y;
+describe('First React component test with Enzyme', () => {
+    it('sum', () => {
+        expect(sum(1,2)).toEqual(3); 
+    })
+});
 
 
-describe('Home', () => {
-    let wrapper;
 
-    // beforeAll(() => {
-    //   wrapper = shallow(<Home />);
-    // });
+// describe('Home', () => {
+//     let wrapper;
+    
+//     beforeAll(() => {
+//       wrapper = shallow(<Home />);
+//     });
 
-    wrapper = shallow(<Home />);
+//     // wrapper = shallow(<Home />);
 
-    it('Renders a <h1> tag with the label in bold', () => {
-      expect(wrapper.type()).toEqual('h1');
-      expect(wrapper.text()).toEqual('Buy a keyboard wrist rest that perfectly compliments your style');
-      // console.log(wrapper.text());
-      expect(wrapper.find('strong').text()).toMatch('Buy a keyboard wrist rest that perfectly compliments your style');
-    });
-  });
+//     it('Renders a <h1> tag with the label in bold', () => {
+//       expect(wrapper.type()).toEqual('h1');
+//       expect(wrapper.text()).toEqual('Buy a keyboard wrist rest that perfectly compliments your style');
+//       // console.log(wrapper.text());
+//       expect(wrapper.find('strong').text()).toMatch('Buy a keyboard wrist rest that perfectly compliments your style');
+//     });
+//   });

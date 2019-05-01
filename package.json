@@ -4,13 +4,8 @@
   "description": "A store to custom configure your wrist rest",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "jest --verbose",
     "start": "webpack-dev-server --open & nodemon server/app.js",
-=======
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open & nodemon server.js",
->>>>>>> 9e54530aacb5a55a6b901f19b36d0d205403144a
     "dev-client": "webpack-dev-server",
     "build": "webpack"
   },
@@ -26,6 +21,8 @@
   "homepage": "https://github.com/lumber-exotics/custom-store#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
