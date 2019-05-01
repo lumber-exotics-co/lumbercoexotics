@@ -2,10 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from './header';
 import Home from './home';
+import Chat from './Chat';
 import WoodContainer from '../containers/woodContainer';
 import StainContainer from '../containers/stainContainer';
 import Success from './success';
 import Cart from '../containers/cart';
+
 
 const App = () => {
   return (
@@ -14,6 +16,7 @@ const App = () => {
         <Header/>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/chat" component={Chat} />
           <Route exact path="/wood" component={WoodContainer} />>
           <Route exact path="/stain" component={StainContainer} />
           <Route exact path="/cart" component={Cart} />

@@ -4,3 +4,4 @@ export const ADDTOCART = "ADDTOCART";
 export const SELECT_WOOD = "SELECT_WOOD";
 export const SELECT_STAIN = "SELECT_STAIN";
 export const SUBMIT_ORDER = "SUBMIT_ORDER";
+export const ADD_SOCKET = "ADD_SOCKET";
