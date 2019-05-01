@@ -36,17 +36,20 @@ class Chat extends Component {
   }
 
   render() {
-    return(
-      <div>
+    // return(
+    //   // <div>
 
-        <input name='msg' type='text'></input>
-        <button onClick={ (e) => {
-          console.log(e.target.value)
-          this.handleClick(e.target.value)
-        } 
-          }>Send</button>
-      </div>
-    )
+    //     {/* <input name='msg' type='text'></input>
+    //     <button onClick={ (e) => {
+    //       console.log(e.target.value)
+    //       this.handleClick(e.target.value)
+    //     } 
+    //       }>Send</button> */}
+    //       {/* <form onSubmit={this.handleClick}>
+    //         <input type="text" placeholder=""
+    //       </form>
+    //   </div> */}
+    // )
   }
 }
 

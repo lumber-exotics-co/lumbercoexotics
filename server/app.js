@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.listen(PORT, ()=>{
+  console.log('Listening on PORT 3000.')
+})
 //routes
 
 const productRoute = require('./routes/productRoute.js');
@@ -58,9 +61,9 @@ app.use('/api', productRoute);
   })
   
   
-  server.listen(PORT, '192.168.0.59', () => {
-    console.log(`Listening on ${PORT}.`)
-  })
+  // server.listen(PORT, '192.168.0.59', () => {
+  //   console.log(`Listening on ${PORT}.`)
+  // })
 
 
 
