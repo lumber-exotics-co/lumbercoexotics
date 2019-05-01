@@ -4,9 +4,8 @@
   "description": "A store to custom configure your wrist rest",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "start": "nodemon server/bin/www.js",
-    "dev-client": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open & nodemon server/app.js",
     "build": "webpack"
   },
   "jest": {
@@ -29,6 +28,7 @@
     "cookie-parser": "^1.4.4",
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
+    "path": "^0.12.7",
     "pg": "^7.10.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -37,9 +37,14 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+<<<<<<< HEAD
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+=======
     "style-loader": "^0.23.1",
     "svg.js": "^2.7.1",
     "victory": "^32.2.0",
+>>>>>>> 356be597571329706b843a017c66890d258b598b
     "webpack": "^4.30.0"
   },
   "devDependencies": {
