@@ -4,8 +4,8 @@
   "description": "A store to custom configure your wrist rest",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/app.js",
+    "test": "jest --verbose",
+    "start": "webpack-dev-server --open & nodemon server/app.js",
     "dev-client": "webpack-dev-server",
     "build": "webpack"
   },
@@ -42,6 +42,10 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.7.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
     "webpack-dev-server": "^3.3.1"
