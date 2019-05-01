@@ -17,6 +17,7 @@ const ProductDisplay = props => {
   return (
     <div onClick={handleClick} style={style} id={props.type}>
       <ul>
+        <img src={props.image}></img>
         <li> {props.type} </li>
         <li> {props.image} </li>
         <li> {props.description} </li>

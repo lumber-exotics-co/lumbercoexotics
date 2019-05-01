@@ -46,12 +46,12 @@ productController.createCart = (req, res) => {
   function getOrderID() {
     let name = regBody.customer;
     let ranNum = Math.floor(1000 + Math.random() * 9000); 
-    let orderID = name + ranNum;
+    let orderID = ranNum;
     console.log(orderID);
   };
 
   // function insertOrder(){
-
+    
 
 
   // }
