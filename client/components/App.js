@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from './header';
 import Home from './home';
 import WoodContainer from '../containers/woodContainer';
@@ -7,11 +7,19 @@ import StainContainer from '../containers/stainContainer';
 import Success from './success';
 import Cart from '../containers/cart';
 import AnalyticsContainer from '../containers/analyticsContainer';
+import './styles.css'
+
+
 
 const App = () => {
   return (
     <Router>
       <div>
+        <ul className="navList">
+        <li className="listItems"><Link className="navLinks" to="/">Home</Link></li>
+        <li className="listItems"><Link className="navLinks" to="/analytics">Analytics</Link></li>
+        </ul>
+        <div/>
         <Header/>
         <Switch>
           <Route exact path="/" component={Home} />
