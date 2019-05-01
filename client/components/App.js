@@ -6,6 +6,7 @@ import WoodContainer from '../containers/woodContainer';
 import StainContainer from '../containers/stainContainer';
 import Success from './success';
 import Cart from '../containers/cart';
+import AnalyticsContainer from '../containers/analyticsContainer';
 
 const App = () => {
   return (
@@ -14,8 +15,9 @@ const App = () => {
         <Header/>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/wood" component={WoodContainer} />>
+          <Route exact path="/wood" component={WoodContainer} />
           <Route exact path="/stain" component={StainContainer} />
+          <Route exact path="/analytics" component={AnalyticsContainer} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/success" component={Success} />
         </Switch>

@@ -22,6 +22,15 @@ productController.stainQuery = (req, res, next) => {
   });
 };
 
+productController.analyticsQuery = (req,res,next) => {
+    pool.query('SELECT * FROM cart', (err,result) => {
+      if(err) {
+        throw err
+      }
+      res.send(result.rows);
+    });
+};
+
 productController.createCart = (req, res) => {
   const regBody = {
     'customer': 'Mike',
