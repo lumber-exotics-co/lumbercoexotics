@@ -10,6 +10,10 @@ const server = require('http').createServer(app)
 
 const io = require('socket.io')(server);
 
+server.listen(PORT, '192.168.0.59', () => {
+  console.log(`Listening on ${PORT}.`)
+})
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -47,13 +51,12 @@ app.get('/chat',function(req,res) {
   res.sendFile(path.resolve(__dirname + '/../indexChat.html'))
 })
 
-server.listen(PORT, () => {
-  console.log(`Listening on PORT: ${PORT}.`)
-})
 
-io.on('connection', function (socket){
+io.sockets.on('connection', function (socket){
+  let socketId = socket.id;
+  let clientIp = socket.request.connection.remoteAddress;
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg)
+    io.sockets.emit('chat message', msg)
     
   })
 
