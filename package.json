@@ -4,14 +4,9 @@
   "description": "A store to custom configure your wrist rest",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "jest --verbose",
     "start": "webpack-dev-server --open & nodemon server/app.js",
     "dev-client": "webpack-dev-server",
-=======
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open & nodemon server/app.js",
->>>>>>> 88f70ec89a5da651e993b21d0b115fbb20705650
     "build": "webpack"
   },
   "jest": {
@@ -34,6 +29,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
     "path": "^0.12.7",

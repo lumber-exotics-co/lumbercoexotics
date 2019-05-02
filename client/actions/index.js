@@ -111,3 +111,18 @@ export const selectStain = (value) => {
   }
 };
 
+
+export const currentChange = (currMsg) => {
+  return {
+    type: types.CURR_MESSAGE,
+    payload: currMsg
+  }
+}
+
+export const resetCurrent = (resetMsg) => {
+  return {
+    type: types.RESET_MESSAGE,
+    payload: resetMsg
+  }
+}
+

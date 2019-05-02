@@ -25,6 +25,12 @@ module.exports = {
     },
     {test: /\.css$/, use: ['style-loader', 'css-loader']},
   ]
+//     resolve: {
+//     extensions: ['', '.js', '.jsx', '.css'],
+//     modulesDirectories: [
+//       'node_modules'
+//     ]        
+// }
   },
   output: {
     path: path.resolve(__dirname, 'build'),

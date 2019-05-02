@@ -1,58 +1,77 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client'
 import { connect } from 'react-redux';
+import * as actions from './../actions/index'
 
 const mapDispatchToProps = dispatch => ({
-  addSocket: ws => {
-    dispatch(actions.addSocket(ws));
+  currentChange: (currMsg) => {
+    dispatch(actions.currentChange(currMsg));
+  },
+  resetCurrent: (resetMsg) => {
+    dispatch(actions.resetCurrent(resetMsg));
   }
+})
+
+const mapStateToProps = store => ({
+  messageArr : store.messages.message,
+  socket : store.messages.socket,
+  currentMessage : store.messages.currentMessage
 })
 
 class Chat extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      messages: [],
-    }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+ 
   }
 
-  componentDidMount() {
+componentDidMount() {
     //initate socket connection for when user is directed to /chat endpoint
-    const socket = io();
 
-    socket.on('chat message', msg => {
-      // console.log('from message', msg);
-      socket.emit('msg', data)
-    });
-    // this.props.addSocket (socket);
-  }
+    this.props.socket.on('connection', function (socket){
+    console.log('connection is live on client side.')
+  })
+}
 
-  handleClick (msg) {
-    const msgArr = this.state.messages;
-    msgArr.push(msg);
-    // console.log('msg', msg);
-    this.setState({messages: msgArr})
+componentDidUpdate() {
+  let that = this
+  this.props.socket.on('chat', function (msg) {
+    // console.log('this is the message arr', that.props.messageArr)
+    console.log('this is msg on client', msg);
+    // console.log(typeof this.props.resetCurrent);
+    that.props.resetCurrent(msg);
+  })
+}
+
+
+
+
+
+handleClick() {
+  console.log('im in handle click')
+  this.props.socket.emit('chat message', this.props.currentMessage);
+
+    // this.props.resetCurrent(this.props.currentMessage)
+  
   }
 
   render() {
-    // return(
-    //   // <div>
-
-    //     {/* <input name='msg' type='text'></input>
-    //     <button onClick={ (e) => {
-    //       console.log(e.target.value)
-    //       this.handleClick(e.target.value)
-    //     } 
-    //       }>Send</button> */}
-    //       {/* <form onSubmit={this.handleClick}>
-    //         <input type="text" placeholder=""
-    //       </form>
-    //   </div> */}
-    // )
+    console.log('this is the array', this.props.messageArr);
+    const msgHistory = this.props.messageArr.map((el, index) => {
+      return <div className="board" key={index}>{el}</div>
+    })
+    // const msgHistory = this.props.messageArr[this.props.messageArr.length - 1]
+    return(
+      <div id="msgBoard">
+        {msgHistory}
+        <input name='msg' type='text' onChange={(e) => this.props.currentChange(e.target.value)}></input>
+        <button onClick={this.handleClick}>Send</button>
+        <div>I'm rendering</div>
+      </div>
+    )
   }
 }
 
 
-export default Chat;
-// export default connect(mapDispatchToProps, null)(Chat)
+// export default Chat;
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

@@ -7,28 +7,31 @@ const PORT = 3000;
 const app = express();
 const server = require('http').createServer(app)
 
-const io = require('socket.io')(server);
 
-<<<<<<< HEAD
-server.listen(PORT, '192.168.0.221', () => {
+const io = require('socket.io')(server);
+server.listen(PORT, () => {
   console.log(`Listening on ${PORT}.`)
 })
 
-=======
->>>>>>> 88f70ec89a5da651e993b21d0b115fbb20705650
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
-app.listen(PORT, ()=>{
-  console.log('Listening on PORT 3000.')
-})
+// app.listen(PORT, ()=>{
+//   console.log('Listening on PORT 3000.')
+// })
 //routes
 
 const productRoute = require('./routes/productRoute.js');
 
 app.get('/', (req, res)=>{
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, './../index.html'));
 });
 
 
@@ -52,27 +55,26 @@ app.use('/api', productRoute);
   
   //EVERYTHING BELOW IS SOCKET.IO RELATED
   
-  app.get('/chat',function(req,res) {
-    res.sendFile(path.resolve(__dirname + '/../indexChat.html'))
-  })
+// app.get('/chat',function(req,res) {
+//   res.sendFile(path.join(__dirname, './../index.html'))
+// })
   
   
-  io.on('connection', function (socket){
-
-
-    socket.on('chat message', function(msg){
-      io.emit('chat message', msg)
-      
-    })
-    
+io.on('connection', function (socket){
+  // console.log(socket.id);
+  socket.on('chat message', msg => {
+    console.log('this is msg in server', msg);
+    socket.emit('chat', msg);
   })
+  
+})
   
   
   // server.listen(PORT, '192.168.0.59', () => {
   //   console.log(`Listening on ${PORT}.`)
   // })
 
-
+ 
 
 
 module.exports = app;
