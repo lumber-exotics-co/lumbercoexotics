@@ -107,49 +107,49 @@ const pool = new Pool({
 //   "total" numeric(10,2))`;
 
 
-function createWoodTableAndInsertValues() {
-  pool.query(createWoodTable, (err, res) => {
-    if (err) console.log(err);
-    pool.query('SELECT * FROM stain', (err, result) => {
-      if (result.rowCount < 6) {
-        const woodValues = [];
-        for (let i = 0; i < woodValuesToInsert.length; i++) {
-          woodValues.push(Object.values(woodValuesToInsert[i]));
-        }
-        woodValues.forEach(value => {
-          pool.query(`INSERT INTO wood ("type", "image", "description", "price", "inStock") VALUES ($1, $2, $3, $4, $5) RETURNING *;`, value, (err, res) => {
-            if (err) console.log(err);
-          });
-        });
-      }
-    });
-  });
-}
+// function createWoodTableAndInsertValues() {
+//   pool.query(createWoodTable, (err, res) => {
+//     if (err) console.log(err);
+//     pool.query('SELECT * FROM stain', (err, result) => {
+//       if (result.rowCount < 6) {
+//         const woodValues = [];
+//         for (let i = 0; i < woodValuesToInsert.length; i++) {
+//           woodValues.push(Object.values(woodValuesToInsert[i]));
+//         }
+//         woodValues.forEach(value => {
+//           pool.query(`INSERT INTO wood ("type", "image", "description", "price", "inStock") VALUES ($1, $2, $3, $4, $5) RETURNING *;`, value, (err, res) => {
+//             if (err) console.log(err);
+//           });
+//         });
+//       }
+//     });
+//   });
+// }
 
-function createStainTableAndInsertValues() {
-  pool.query(stainTableInsertQuery, (err, res) => {
-    if (err) console.log(err);
-    pool.query('SELECT * FROM stain', (err, result) => {
-      if (result.rowCount < 6) {
-        const stainValues = [];
-        for (let i = 0; i < stainValuesTOInsert.length; i++) {
-          stainValues.push(Object.values(stainValuesTOInsert[i]));
-        }
-        stainValues.forEach(value => {
-          pool.query(`INSERT INTO stain ("type", "image", "description", "price", "inStock") VALUES ($1, $2, $3, $4, $5) RETURNING *;`, value, (err, res) => {
-            if (err) console.log(err);
-          });
-        })
-      }
-    });
-  });
-}
+// function createStainTableAndInsertValues() {
+//   pool.query(stainTableInsertQuery, (err, res) => {
+//     if (err) console.log(err);
+//     pool.query('SELECT * FROM stain', (err, result) => {
+//       if (result.rowCount < 6) {
+//         const stainValues = [];
+//         for (let i = 0; i < stainValuesTOInsert.length; i++) {
+//           stainValues.push(Object.values(stainValuesTOInsert[i]));
+//         }
+//         stainValues.forEach(value => {
+//           pool.query(`INSERT INTO stain ("type", "image", "description", "price", "inStock") VALUES ($1, $2, $3, $4, $5) RETURNING *;`, value, (err, res) => {
+//             if (err) console.log(err);
+//           });
+//         })
+//       }
+//     });
+//   });
+// }
 
-function createCartTable() {
-  pool.query(cartTableQuery, (err, res) => {
-    if (err) console.log(err);
-  });
-}
+// function createCartTable() {
+//   pool.query(cartTableQuery, (err, res) => {
+//     if (err) console.log(err);
+//   });
+// }
 
 // createWoodTableAndInsertValues();
 // createStainTableAndInsertValues();

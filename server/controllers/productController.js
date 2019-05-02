@@ -22,6 +22,15 @@ productController.stainQuery = (req, res, next) => {
   });
 };
 
+productController.analyticsQuery = (req,res,next) => {
+    pool.query('SELECT * FROM cart', (err,result) => {
+      if(err) {
+        throw err
+      }
+      res.send(result.rows);
+    });
+};
+
 productController.createCart = (req, res) => {
   const regBody = {
     'customer': 'Mike',
@@ -46,12 +55,12 @@ productController.createCart = (req, res) => {
   function getOrderID() {
     let name = regBody.customer;
     let ranNum = Math.floor(1000 + Math.random() * 9000); 
-    let orderID = name + ranNum;
+    let orderID = ranNum;
     console.log(orderID);
   };
 
   // function insertOrder(){
-
+    
 
 
   // }

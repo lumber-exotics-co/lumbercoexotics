@@ -1,3 +1,29 @@
 .header {
     font-size: 50px;
 }
+
+.navList {
+    display: flex;
+    list-style-type: none;
+}
+
+.listItems{
+    display: block;
+    flex: 0 1 auto;
+    list-style-type: none;
+    margin: 1rem 0;
+}
+
+.navLinks {
+    flex: 0 1 auto;
+    padding-right: 20px;
+    list-style-type: none;
+}
+
+.combinedChart {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 30;
+    padding-bottom: 150px;
+}
