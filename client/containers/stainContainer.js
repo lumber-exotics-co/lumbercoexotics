@@ -55,13 +55,15 @@ class StainContainer extends Component {
     ));
 
     return (
-      <div>
+      <div className="productContainer">
         <h1>Select your stain</h1>
         {stainBoxes}
-        <button>
-          <Link to="/wood/">Previous</Link>
-        </button>
-        <button onClick={this.goToCheckout}>Next step: Checkout</button>
+        <div className="buttonDiv">
+          <button>
+            <Link to="/wood/">Previous</Link>
+          </button>
+          <button className="button" onClick={this.goToCheckout}>Next step: Checkout</button>
+      </div>
       </div>
     );
   }

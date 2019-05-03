@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 
 const Home = () => (
   <div>
-    <h1><strong>Buy a keyboard wrist rest that perfectly compliments your style</strong></h1>
-    <Link to="/wood">get started </Link>
+    <div id="containerHome">
+    <h1>A keyboard wrist rest that compliments your style</h1>
+    <Link id="woodLink" to="/wood">Check out our wood </Link>
+    </div>
+    <img className='yosemite' src='https://media.giphy.com/media/rUrPxeIxcwZTq/giphy.gif' alt="yosemite" /> 
+
   </div>
 );
 
