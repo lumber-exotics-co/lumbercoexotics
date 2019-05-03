@@ -5,7 +5,7 @@ import { emptyStatement } from '@babel/types';
 const initialState = {
   message: ['Welcome'],
   currentMessage: '',
-  socket: io()
+  socket: io('localhost:3000'),
 };
 
 const messageReducer = (state = initialState, action) => {
@@ -13,21 +13,16 @@ const messageReducer = (state = initialState, action) => {
     
     case types.CURR_MESSAGE: 
       
-      const newCurr = action.payload;
+      const newCurr = action.payload
       return {
         ...state,
         currentMessage: newCurr
       }
     
     case types.RESET_MESSAGE: 
-      // if(state.message.length > 0) {
-      //   const newArr = state.message.slice(0);
-      //   console.log(newArr);
-      //   newArr.push(action.payload);
-      // // console.log('this is the new array', newArr)
-      //   let emptyString = '';
-      // }
-      const newArr = state.message.slice(0);
+
+      const newArr = state.message.slice();
+      console.log(state.message.slice(0))
       console.log(newArr);
       newArr.push(action.payload);
     // console.log('this is the new array', newArr)

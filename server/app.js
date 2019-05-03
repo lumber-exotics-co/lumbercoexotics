@@ -9,14 +9,15 @@ const server = require('http').createServer(app)
 
 
 const io = require('socket.io')(server);
-server.listen(PORT, () => {
+server.listen(PORT,  () => {
   console.log(`Listening on ${PORT}.`)
 })
-
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -36,9 +37,9 @@ app.get('/', (req, res)=>{
 
 
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.use(cookieParser())
+// app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+// app.use(cookieParser())
 
 
 // app.use('/build', express.static(path.join(__dirname, '../build')));
@@ -54,10 +55,7 @@ app.use('/api', productRoute);
   
   
   //EVERYTHING BELOW IS SOCKET.IO RELATED
-  
-// app.get('/chat',function(req,res) {
-//   res.sendFile(path.join(__dirname, './../index.html'))
-// })
+
   
   
 io.on('connection', function (socket){
