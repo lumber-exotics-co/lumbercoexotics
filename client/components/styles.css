@@ -29,6 +29,20 @@
     color: orange
 }
 
+
+ #textbox {
+    background-color: rgb(215, 189, 187);
+    color: red;
+ 
+ }
+ 
+ #chatButton {
+    background-color: red;
+ }
+ 
+ #msgBoard {
+    margin-top: 25%;
+ }
 .header {
     text-align: center;
 }

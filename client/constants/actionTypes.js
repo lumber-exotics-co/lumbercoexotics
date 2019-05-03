@@ -5,3 +5,6 @@ export const SELECT_WOOD = "SELECT_WOOD";
 export const SELECT_STAIN = "SELECT_STAIN";
 export const SUBMIT_ORDER = "SUBMIT_ORDER";
 export const GET_DATA = "GET_DATA";
+export const CURR_MESSAGE = "CURR_MESSAGE";
+export const RESET_MESSAGE = "RESET_MESSAGE";
+

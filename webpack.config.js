@@ -3,10 +3,14 @@ const path = require('path');
 module.exports = {
   entry: './client/index.js',
   mode: 'development',
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js'
+  },
   devServer: {
     publicPath: '/build/',
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/api': 'http://localhost:3000/',
     },
     historyApiFallback: true,
     // contentBase: './'
@@ -25,9 +29,11 @@ module.exports = {
     },
     {test: /\.css$/, use: ['style-loader', 'css-loader']},
   ]
+//     resolve: {
+//     extensions: ['', '.js', '.jsx', '.css'],
+//     modulesDirectories: [
+//       'node_modules'
+//     ]        
+// }
   },
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
-  }
 };
