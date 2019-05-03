@@ -43,8 +43,7 @@ componentDidMount() {
 
 
 handleClick(e) {
-  
-  console.log('im in handle click')
+
   this.props.socket.emit('chat message', this.props.currentMessage);
   
   

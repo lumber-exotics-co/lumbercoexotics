@@ -20,6 +20,7 @@ const App = () => {
         <ul className="navList">
         <li className="listItems"><Link className="navLinks" to="/">Home</Link></li>
         <li className="listItems"><Link className="navLinks" to="/analytics">Analytics</Link></li>
+        <li className="listItems"><Link className="navLinks" to="/chat">Chat</Link></li>
         </ul>
         <div/>
         <Header/>

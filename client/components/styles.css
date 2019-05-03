@@ -27,3 +27,18 @@
     font-size: 30;
     padding-bottom: 150px;
 }
+
+
+ #textbox {
+    background-color: rgb(215, 189, 187);
+    color: red;
+ 
+ }
+ 
+ #chatButton {
+    background-color: red;
+ }
+ 
+ #msgBoard {
+    margin-top: 25%;
+ }
